@@ -1,0 +1,35 @@
+{
+  "seed": 42,
+  "device": "auto",
+  "data": {
+    "root": "D:/COSMOS",
+    "train_json": "D:/COSMOS/train_data.json",
+    "val_json": "D:/COSMOS/val_data.json",
+    "same_image_weight": 0.35
+  },
+  "model": {
+    "encoder": "clip",
+    "clip_name": "openai/clip-vit-base-patch16",
+    "local_files_only": false,
+    "freeze_encoder": true,
+    "max_length": 77,
+    "dim": 256,
+    "views": 4,
+    "use_ra": true,
+    "use_lfe": true,
+    "use_local_alignment": true
+  },
+  "train": {
+    "epochs": 20,
+    "batch_size": 16,
+    "accumulation": 2,
+    "workers": 0,
+    "lr": 0.0001,
+    "weight_decay": 0.01,
+    "grad_clip": 1.0,
+    "amp": true,
+    "log_every": 50,
+    "output": "outputs/lgam_seed42"
+  },
+  "loss": {"alignment": 0.1, "consistency": 0.05, "temperature": 0.07}
+}
